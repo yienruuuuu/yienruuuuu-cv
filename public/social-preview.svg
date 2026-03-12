@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbf7f1"/>
+      <stop offset="100%" stop-color="#efe7dc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="175" cy="122" r="120" fill="#f0d4c3"/>
+  <rect x="80" y="80" width="1040" height="470" rx="40" fill="#fffaf2" stroke="#d4c6b7"/>
+  <text x="120" y="230" fill="#b05d2c" font-size="24" font-family="Segoe UI, sans-serif" letter-spacing="6">PERSONAL RESUME</text>
+  <text x="120" y="330" fill="#1f2521" font-size="92" font-family="Segoe UI, sans-serif" font-weight="700">Yienru</text>
+  <text x="120" y="405" fill="#5e675f" font-size="34" font-family="Segoe UI, sans-serif">Software Engineer / Frontend-focused Developer</text>
+  <text x="120" y="492" fill="#5e675f" font-size="28" font-family="Segoe UI, sans-serif">Bilingual static resume site built with Astro.</text>
+</svg>

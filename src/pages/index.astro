@@ -1,0 +1,257 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { languages, navigation, siteContent } from "../data/site";
+const defaultLang = "zh" as const;
+---
+
+<BaseLayout title={siteContent.seo.title} description={siteContent.seo.description.zh}>
+  <main class="shell">
+    <header class="hero">
+      <div class="topbar">
+        <a class="brand" href="#top">{siteContent.profile.name}</a>
+        <nav class="nav" aria-label="Primary">
+          {navigation.map((item) => (
+            <a href={`#${item.id}`}>
+              <span data-lang-text="zh">{item.label.zh}</span>
+              <span data-lang-text="en">{item.label.en}</span>
+            </a>
+          ))}
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Language switcher">
+          {languages.map((language) => (
+            <button type="button" class="lang-button" data-set-lang={language.code}>
+              {language.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <section class="hero-grid" id="top">
+        <div>
+          <p class="eyebrow">
+            <span data-lang-text="zh">個人履歷網站</span>
+            <span data-lang-text="en">Resume Site</span>
+          </p>
+          <h1>{siteContent.profile.name}</h1>
+          <p class="headline">
+            <span data-lang-text="zh">{siteContent.profile.role.zh}</span>
+            <span data-lang-text="en">{siteContent.profile.role.en}</span>
+          </p>
+          <p class="intro">
+            <span data-lang-text="zh">{siteContent.profile.intro.zh}</span>
+            <span data-lang-text="en">{siteContent.profile.intro.en}</span>
+          </p>
+          <div class="hero-meta">
+            <span>
+              <strong data-lang-text="zh">地點</strong>
+              <strong data-lang-text="en">Location</strong>
+              <span data-lang-text="zh">{siteContent.profile.location.zh}</span>
+              <span data-lang-text="en">{siteContent.profile.location.en}</span>
+            </span>
+            <span>
+              <strong data-lang-text="zh">狀態</strong>
+              <strong data-lang-text="en">Status</strong>
+              <span data-lang-text="zh">{siteContent.profile.availability.zh}</span>
+              <span data-lang-text="en">{siteContent.profile.availability.en}</span>
+            </span>
+          </div>
+          <div class="cta-row">
+            <a class="button primary" href="#contact">
+              <span data-lang-text="zh">聯絡我</span>
+              <span data-lang-text="en">Get in touch</span>
+            </a>
+            {
+              siteContent.resume.href ? (
+                <a class="button secondary" href={siteContent.resume.href} download>
+                  <span data-lang-text="zh">{siteContent.resume.label.zh}</span>
+                  <span data-lang-text="en">{siteContent.resume.label.en}</span>
+                </a>
+              ) : (
+                <span class="button secondary is-disabled" aria-disabled="true">
+                  <span data-lang-text="zh">履歷 PDF 即將提供</span>
+                  <span data-lang-text="en">Resume PDF coming soon</span>
+                </span>
+              )
+            }
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          {siteContent.profile.stats.map((stat) => (
+            <div class="stat">
+              <strong>{stat.value}</strong>
+              <span data-lang-text="zh">{stat.label.zh}</span>
+              <span data-lang-text="en">{stat.label.en}</span>
+            </div>
+          ))}
+        </aside>
+      </section>
+    </header>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="section-kicker">01</p>
+        <h2>
+          <span data-lang-text="zh">{siteContent.about.heading.zh}</span>
+          <span data-lang-text="en">{siteContent.about.heading.en}</span>
+        </h2>
+      </div>
+      <div class="prose">
+        {siteContent.about.body.map((paragraph) => (
+          <p>
+            <span data-lang-text="zh">{paragraph.zh}</span>
+            <span data-lang-text="en">{paragraph.en}</span>
+          </p>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-heading">
+        <p class="section-kicker">02</p>
+        <h2>
+          <span data-lang-text="zh">經歷</span>
+          <span data-lang-text="en">Experience</span>
+        </h2>
+      </div>
+      <div class="timeline">
+        {siteContent.experience.map((item) => (
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="panel-title">{item.company}</p>
+                <p class="panel-subtitle">
+                  <span data-lang-text="zh">{item.role.zh}</span>
+                  <span data-lang-text="en">{item.role.en}</span>
+                </p>
+              </div>
+              <div class="panel-meta">
+                <span>{item.period}</span>
+                <span data-lang-text="zh">{item.location.zh}</span>
+                <span data-lang-text="en">{item.location.en}</span>
+              </div>
+            </div>
+            <p class="panel-summary">
+              <span data-lang-text="zh">{item.summary.zh}</span>
+              <span data-lang-text="en">{item.summary.en}</span>
+            </p>
+            <ul class="bullet-list">
+              {item.highlights.map((highlight) => (
+                <li>
+                  <span data-lang-text="zh">{highlight.zh}</span>
+                  <span data-lang-text="en">{highlight.en}</span>
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-heading">
+        <p class="section-kicker">03</p>
+        <h2>
+          <span data-lang-text="zh">技能</span>
+          <span data-lang-text="en">Skills</span>
+        </h2>
+      </div>
+      <div class="grid cards">
+        {siteContent.skills.map((group) => (
+          <article class="panel">
+            <p class="panel-title">
+              <span data-lang-text="zh">{group.title.zh}</span>
+              <span data-lang-text="en">{group.title.en}</span>
+            </p>
+            <div class="tag-list">
+              {group.items.map((skill) => (
+                <span class="tag">{skill}</span>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="section-heading">
+        <p class="section-kicker">04</p>
+        <h2>
+          <span data-lang-text="zh">專案</span>
+          <span data-lang-text="en">Projects</span>
+        </h2>
+      </div>
+      <div class="grid cards">
+        {siteContent.projects.filter((project) => project.featured).map((project) => (
+          <article class="panel">
+            <div class="panel-header">
+              <p class="panel-title">{project.name}</p>
+            </div>
+            <p class="panel-summary">
+              <span data-lang-text="zh">{project.summary.zh}</span>
+              <span data-lang-text="en">{project.summary.en}</span>
+            </p>
+            <div class="tag-list">
+              {project.tags.map((tag) => (
+                <span class="tag">{tag}</span>
+              ))}
+            </div>
+            <div class="link-row">
+              {project.links.map((link) => (
+                <a href={link.href} target="_blank" rel="noreferrer">{link.label}</a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="section-heading">
+        <p class="section-kicker">05</p>
+        <h2>
+          <span data-lang-text="zh">{siteContent.contact.heading.zh}</span>
+          <span data-lang-text="en">{siteContent.contact.heading.en}</span>
+        </h2>
+      </div>
+      <div class="contact-card">
+        <p class="contact-copy">
+          <span data-lang-text="zh">{siteContent.contact.body.zh}</span>
+          <span data-lang-text="en">{siteContent.contact.body.en}</span>
+        </p>
+        <div class="link-row">
+          {siteContent.contact.links.map((link) => (
+            <a class="button primary" href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script is:inline define:vars={{ defaultLang }}>
+    const root = document.documentElement;
+    const buttons = document.querySelectorAll("[data-set-lang]");
+    const applyLanguage = (lang) => {
+      root.dataset.lang = lang;
+      document.title = lang === "zh"
+        ? "Yienru Resume"
+        : "Yienru Resume";
+      buttons.forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.dataset.setLang === lang));
+      });
+    };
+
+    const stored = window.localStorage.getItem("preferred-language");
+    applyLanguage(stored === "en" ? "en" : defaultLang);
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const lang = button.dataset.setLang === "en" ? "en" : "zh";
+        window.localStorage.setItem("preferred-language", lang);
+        applyLanguage(lang);
+      });
+    });
+  </script>
+</BaseLayout>
