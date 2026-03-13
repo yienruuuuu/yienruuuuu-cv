@@ -1,0 +1,159 @@
+{
+  "profile": {
+    "name": "李彥儒",
+    "englishName": "ERIC",
+    "title": "後端工程師",
+    "specialties": [
+      "Java",
+      "高併發系統設計"
+    ],
+    "contact": {
+      "phone": "+886-908-051-875",
+      "email": "c6b7yntz@gmail.com"
+    },
+    "about": "具備4年後端開發經驗的後端工程師，經手過高併發系統設計、分散式架構、資料庫效能優化與系統整合。主要技術領域包含 Java / Spring Boot 後端開發，以及高流量 API 系統架構設計。曾負責開發訂位系統高流量庫存模組及主導開發 Qrcode 點餐服務、自助機服務。熟悉從系統設計、效能優化、資料庫架構、非同步處理到系統監控的完整後端工程流程。"
+  },
+  "skills": {
+    "backend": [
+      "Java",
+      "Spring Boot",
+      "JPA",
+      "QueryDSL",
+      "RESTful API 設計",
+      "Junit",
+      "Mockito",
+      "Spring Security"
+    ],
+    "database": {
+      "rdbms": [
+        "PostgreSQL",
+        "MySql",
+        "Oracle DB"
+      ],
+      "nosql": [
+        "MongoDb",
+        "Redis"
+      ]
+    },
+    "devOpsAndInfrastructure": [
+      "Docker",
+      "Linux",
+      "GitLab CI/CD(調適)"
+    ],
+    "other": [
+      "Agile",
+      "Maven",
+      "Gradle"
+    ]
+  },
+  "workExperience": [
+    {
+      "company": "德安資訊股份有限公司",
+      "period": {
+        "start": "2023/11",
+        "end": "Now"
+      },
+      "title": "後端工程師",
+      "projects": [
+        {
+          "name": "餐飲 SaaS 系統 訂位模組專案",
+          "highlights": [
+            "透過 Partition Table 與 Cache 分散資料庫查詢壓力，並採用 Optimistic Lock 控制庫存競爭。經使用 K6 壓力測試下，庫存查詢服務可穩定承載 2000+ QPS，且 P95 latency 維持在 50ms 以內。",
+            "設計並實作一套可擴充的 Job Engine，開發者可透過自訂 Cron 語法排程巡檢、多租戶資料源切換、佇列分派與 Thread Pool 非同步執行背景任務。",
+            "Engine 依 JobType 動態派發 Executor，並具備殭屍任務恢復、狀態追蹤與重試機制，並以介面抽象化落實開閉原則，降低新任務擴充成本。",
+            "為專案自 Spring Boot 2.7 升版至 Spring Boot 3.2，並解決衝突。"
+          ]
+        },
+        {
+          "name": "Qrcode 點餐系統",
+          "highlights": [
+            "透過策略模式組合工廠模式，重構並實作多支付渠道類別，使支付渠道未來擴充不易相互干擾，且易於撰寫測試，避免把不同金流邏輯耦合進單一交易流程。",
+            "以 AOP + ConcurrentHashMap 實作菜單同步鎖與超時回收，解決多餐廳、多節點情境下的重複同步與資料競爭。",
+            "導入 Quartz，依餐廳設定動態註冊每日同步排程，並在服務啟動時自動載入全租戶的餐廳任務。"
+          ]
+        },
+        {
+          "name": "Qrcode 點餐系統（品質與安全強化）",
+          "highlights": [
+            "導入 Flyway 作為 SQL 版控工具。",
+            "配合客戶 ISO 資安治理要求，系統性處理 SonarQube code smell 與 vulnerability 警示，並完成多項 CVE 風險套件升版與相依性修補。",
+            "將測試覆蓋率自 2% 提高到 82.8%。",
+            "依據第三方滲透測試報告修補高風險弱點，包含導入 XSS 攻擊防護、登入 API 導入圖形驗證碼以防止暴力破解。"
+          ]
+        },
+        {
+          "name": "KDS 廚房顯示系統",
+          "highlights": [
+            "建置餐飲 KDS 後端系統，採用 Spring Boot、JPA、WebSocket、Oracle DB 與排程機制，支援廚房看板與菜口畫面的即時訂單同步，提升出餐資訊更新速度與營運可視性。",
+            "面對多機台高頻更新場景與客戶地端機器效能不佳的瓶頸，將廚房訂單資料查詢與 WebSocket 推播非同步化，改善多機台同時更新時的吞吐能力與穩定性。",
+            "實作廚房作業狀態機，將備餐、叫餐、劃菜、清桌、取消清桌、取餐通知等流程收斂為具交易一致性的服務層邏輯。",
+            "因應地端機器 Windows Server 2016 版本無法安裝 Docker，透過 NSSM 工具實現 Java 進程守護。"
+          ]
+        }
+      ]
+    },
+    {
+      "company": "聯訊網路有限公司",
+      "period": {
+        "start": "2022/2",
+        "end": "2023/7"
+      },
+      "title": "研發部後端工程師",
+      "highlights": [
+        "維護及開發一個包含 CMS 在內的遊戲後台，使用技術包括但不限於 SpringMVC、JPA、MySql。",
+        "對接第三方支付與代付任務，對接約 150 家，使用 Oracle DB、Spring、RESTful API 等。",
+        "配合團隊開發虛擬幣交易平台，專案使用 Spring Boot、Dubbo、MySql、RESTful API、MongoDb，並藉此累積 Docker 使用經驗。",
+        "主動優化負責維護的產品，將專案中冗長的 code 透過 Early Return、變數重命名、增加註解來提升可讀性。",
+        "透過撰寫測試來增加開發穩定性。",
+        "將專案從直接導入 lib 改為使用 Maven 進行依賴管理。",
+        "撰寫 Linux shell script 取代繁瑣的部署方式，並為支付代付專案新增 Telegram bot 進行錯誤告警。"
+      ]
+    },
+    {
+      "company": "國富浩華聯合會計師事務所",
+      "period": {
+        "start": "2019/11",
+        "end": "2021/07"
+      },
+      "title": "審計員"
+    },
+    {
+      "company": "廣俊會計師事務所",
+      "period": {
+        "start": "2017/07",
+        "end": "2019/09"
+      },
+      "title": "審計／記帳人員"
+    }
+  ],
+  "education": [
+    {
+      "school": "Wiedu TibaMe",
+      "program": "Java 雲端服務開發技術養成班",
+      "period": {
+        "start": "2021/9",
+        "end": "2022/1"
+      }
+    },
+    {
+      "school": "私立逢甲大學",
+      "program": "財稅學系",
+      "period": {
+        "start": "2012/7",
+        "end": "2016/7"
+      }
+    }
+  ],
+  "resumeMeta": {
+    "seniorityLevel": "Mid-Senior",
+    "yearsOfExperience": 4,
+    "focusAreas": [
+      "高併發系統設計",
+      "分散式架構",
+      "資料庫效能優化",
+      "系統整合",
+      "非同步處理",
+      "系統監控"
+    ]
+  }
+}
